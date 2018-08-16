@@ -7,6 +7,7 @@ classify hotel reviews as either True or Fake, and either Positive or Negative
 - [Explanation](#explanation)
 - [Prerequisites](#prerequisites)
 - [Quick start](#quick-start)
+- [input file format](#input-file-format)
 - [Running the code](#running-the-code)
 - [Authors](#authors)
 
@@ -17,6 +18,22 @@ classify hotel reviews as either True or Fake, and either Positive or Negative
 
 You need to install:
 - [Python3](https://www.python.org/downloads/)
+
+## Input File Format
+
+  **training data:**
+  
+  reviews should be present in following format in one file:
+  
+  `<review_id> <class1> <class2> <review text>`
+  
+  Where class1 = `Fake` or `True` and class2 = `Pos` or `Neg`
+  
+  **prediction data:**
+  
+  reviews should be present in following format in one file:
+  
+  `<review_id> <review text>`
 
 ## Quick-start
 To start using the hotel-review-classifier you need to clone the repo:
