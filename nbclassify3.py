@@ -6,6 +6,7 @@ import time
 from collections import defaultdict
 import cProfile
 import re
+import argparse
 
 priorProb1 = defaultdict(float)
 priorProb2 = defaultdict(float)
@@ -13,21 +14,15 @@ likelihoodProb1 = defaultdict(float)
 likelihoodProb2 = defaultdict(float)
 
 
-testFile = "coding-2-data-corpus/dev-text.txt"
-
 
 classList = [("True","Pos"),("True","Neg"),("Fake","Pos"),("Fake","Neg")]
 classList1 = ["True","Fake"]
 classList2 = ["Pos","Neg"]
 
-def main():
-	global testFile
-
-	if len(sys.argv)>1:
-		testFile = sys.argv[1]
+def main(testFile="test.txt"):
 
 	flag = False
-	inputFile = open("nbmodel.txt","r",encoding="utf-8")
+	inputFile = open("nb.model","r",encoding="utf-8")
 	lines = inputFile.readlines()
 
 	for line in lines:
@@ -94,4 +89,7 @@ def main():
 
 
 if __name__== "__main__":
-	main()
+	parser = argparse.ArgumentParser()
+	parser.add_argument('-d', '--data', help="path to review file for training", type=str)
+	args = parser.parse_args()
+	main(args.data)

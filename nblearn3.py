@@ -11,6 +11,7 @@ import sys
 from collections import defaultdict
 import copy
 import re
+import argparse
 
 priorProb1 = defaultdict(float)
 priorProb2 = defaultdict(float)
@@ -47,13 +48,7 @@ stopWords = ['few', 'how', 'such', 'doing', 'through', 'should', 'your', 'yourse
 
 
 
-trainFile = "coding-2-data-corpus/train-labeled.txt"
-
-def main():
-	global trainFile
-
-	if len(sys.argv)>1:
-		trainFile = sys.argv[1]
+def main(trainFile="train.txt"):
 
 	inputFile = open(trainFile,"r",encoding="utf-8")
 	lines = inputFile.readlines()
@@ -115,7 +110,7 @@ def main():
 			likelihoodProb2[(fi,c)] = math.log((likelihoodDic2[(fi,c)]+k)/(classLength2[c]+k*V2))	
 
 
-	outputFile = open("nbmodel.txt","w",encoding="utf-8")
+	outputFile = open("nb.model","w",encoding="utf-8")
 	for key in priorProb1:
 		outputFile.write(key+":"+str(priorProb1[key])+"\n")
 	for key in priorProb2:
@@ -130,4 +125,7 @@ def main():
 	outputFile.close()
 
 if __name__== "__main__":
-	main()
+	parser = argparse.ArgumentParser()
+	parser.add_argument('-d', '--data', help="path to review file for training", type=str)
+	args = parser.parse_args()
+	main(args.data)
