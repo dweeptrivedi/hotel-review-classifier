@@ -13,6 +13,7 @@ classify hotel reviews as either True or Fake, and either Positive or Negative
 
 ## Explanation
 
+This code implements Naive Bayes and Perceptron classifier to identify hotel reviews as either True or Fake, and either Positive or Negative. The classifiers have been implemented by using the word tokens as features for classification.
 
 ## Prerequisites
 
